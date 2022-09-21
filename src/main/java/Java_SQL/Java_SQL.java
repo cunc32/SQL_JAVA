@@ -792,7 +792,7 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_TabsMouseClicked
 
     private void Mod_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_PaquetesActionPerformed
-        Modificar mod = new Modificar();
+        Modificar mod = new Modificar(Tabs.getSelectedIndex());
         mod.setVisible(true);
     }//GEN-LAST:event_Mod_PaquetesActionPerformed
 
