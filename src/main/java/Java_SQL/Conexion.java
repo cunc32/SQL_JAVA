@@ -29,5 +29,52 @@ public class Conexion {
         return conectar;
 
     }
+    
+    public static ResultSet Consulta(String consulta) {
+        Connection con = getConexion();
+        Statement declara;
+        try {
+            declara = con.createStatement();
+            ResultSet respuesta = declara.executeQuery(consulta);
+            return respuesta;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage(), "Error de Conexion", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    public static void EliminarPaquete(int id) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelPaquete(?)}");
+        entrada.setInt(1, id);
+        entrada.execute();
+    }
+    
+    public static void EliminarCliente(int id) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelCliente(?)}");
+        entrada.setInt(1, id);
+        entrada.execute();
+    }
+    
+    public static void EliminarTransporte(int id) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelTransporte(?)}");
+        entrada.setInt(1, id);
+        entrada.execute();
+    }
+    
+    public static void EliminarAlmacen(int id) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelAlmacen(?)}");
+        entrada.setInt(1, id);
+        entrada.execute();
+    }
+    
+    public static void Query(String consulta) {
+        Connection con = getConexion();
+        Statement declara;
+        try {
+            declara = con.createStatement();
+            declara.executeQuery(consulta);
+        } catch (SQLException e) {
+        }
+    }
 
 }

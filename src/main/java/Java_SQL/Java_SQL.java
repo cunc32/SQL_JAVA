@@ -6,7 +6,9 @@ package Java_SQL;
 
 import java.awt.HeadlessException;
 import java.sql.*;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,26 +35,35 @@ public class Java_SQL extends javax.swing.JFrame {
     private void initComponents() {
 
         LayeredPane = new javax.swing.JLayeredPane();
-        LoginScreen = new javax.swing.JPanel();
-        LoginButton = new javax.swing.JButton();
-        PasswordField = new javax.swing.JPasswordField();
-        UserField = new javax.swing.JTextField();
-        PasswordLabel = new javax.swing.JLabel();
-        LoginLabel = new javax.swing.JLabel();
-        LoginTitle = new javax.swing.JLabel();
         Tabs = new javax.swing.JTabbedPane();
         PaqueteScreen = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PaqueteTable = new javax.swing.JTable();
+        Mod_Paquetes = new javax.swing.JButton();
+        Del_Paquetes = new javax.swing.JButton();
+        New_Paquete = new javax.swing.JButton();
+        Load_Paquete = new javax.swing.JButton();
         ClienteScreen = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ClienteTable = new javax.swing.JTable();
+        New_Paquete1 = new javax.swing.JButton();
+        Load_Paquete1 = new javax.swing.JButton();
+        Mod_Paquetes1 = new javax.swing.JButton();
+        Del_Paquetes1 = new javax.swing.JButton();
         TransporteScreen = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TransporteTable = new javax.swing.JTable();
+        New_Paquete2 = new javax.swing.JButton();
+        Load_Paquete2 = new javax.swing.JButton();
+        Mod_Paquetes2 = new javax.swing.JButton();
+        Del_Paquetes2 = new javax.swing.JButton();
         AlmacenScreen = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         AlmacenTable = new javax.swing.JTable();
+        New_Paquete3 = new javax.swing.JButton();
+        Load_Paquete3 = new javax.swing.JButton();
+        Mod_Paquetes3 = new javax.swing.JButton();
+        Del_Paquetes3 = new javax.swing.JButton();
         BitacoraScreen = new javax.swing.JPanel();
         BitacoraTabs = new javax.swing.JTabbedPane();
         InsercionesTab = new javax.swing.JPanel();
@@ -64,12 +75,488 @@ public class Java_SQL extends javax.swing.JFrame {
         EliminacionesTab = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         EliminacionesTable = new javax.swing.JTable();
+        LoginScreen = new javax.swing.JPanel();
+        LoginButton = new javax.swing.JButton();
+        PasswordField = new javax.swing.JPasswordField();
+        UserField = new javax.swing.JTextField();
+        PasswordLabel = new javax.swing.JLabel();
+        LoginLabel = new javax.swing.JLabel();
+        LoginTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Base de datos");
         setPreferredSize(new java.awt.Dimension(800, 500));
-        setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
+
+        Tabs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabsMouseClicked(evt);
+            }
+        });
+
+        PaqueteTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id paquete", "Id producto", "Tipo", "Ruta", "Peso", "Descripcion", "Declaracion Aduanera", "Valor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(PaqueteTable);
+
+        Mod_Paquetes.setText("Modificar");
+        Mod_Paquetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mod_PaquetesActionPerformed(evt);
+            }
+        });
+
+        Del_Paquetes.setText("Eliminar");
+        Del_Paquetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Del_PaquetesActionPerformed(evt);
+            }
+        });
+
+        New_Paquete.setText("Nuevo");
+        New_Paquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                New_PaqueteActionPerformed(evt);
+            }
+        });
+
+        Load_Paquete.setText("Cargar");
+
+        javax.swing.GroupLayout PaqueteScreenLayout = new javax.swing.GroupLayout(PaqueteScreen);
+        PaqueteScreen.setLayout(PaqueteScreenLayout);
+        PaqueteScreenLayout.setHorizontalGroup(
+            PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaqueteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                    .addGroup(PaqueteScreenLayout.createSequentialGroup()
+                        .addComponent(New_Paquete, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Load_Paquete, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mod_Paquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Del_Paquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        PaqueteScreenLayout.setVerticalGroup(
+            PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaqueteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Mod_Paquetes)
+                    .addComponent(Del_Paquetes)
+                    .addComponent(New_Paquete)
+                    .addComponent(Load_Paquete))
+                .addContainerGap())
+        );
+
+        Tabs.addTab("Paquetes", PaqueteScreen);
+
+        ClienteTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id cliente", "Id paquete", "Nombre", "Direccion", "Telefono", "Pago Mensual", "No. Cuenta", "No. Tarjeta"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(ClienteTable);
+
+        New_Paquete1.setText("Nuevo");
+        New_Paquete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                New_Paquete1ActionPerformed(evt);
+            }
+        });
+
+        Load_Paquete1.setText("Cargar");
+
+        Mod_Paquetes1.setText("Modificar");
+        Mod_Paquetes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mod_Paquetes1ActionPerformed(evt);
+            }
+        });
+
+        Del_Paquetes1.setText("Eliminar");
+        Del_Paquetes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Del_Paquetes1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ClienteScreenLayout = new javax.swing.GroupLayout(ClienteScreen);
+        ClienteScreen.setLayout(ClienteScreenLayout);
+        ClienteScreenLayout.setHorizontalGroup(
+            ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteScreenLayout.createSequentialGroup()
+                        .addComponent(New_Paquete1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Load_Paquete1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mod_Paquetes1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Del_Paquetes1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        ClienteScreenLayout.setVerticalGroup(
+            ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Mod_Paquetes1)
+                    .addComponent(Del_Paquetes1)
+                    .addComponent(New_Paquete1)
+                    .addComponent(Load_Paquete1))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        Tabs.addTab("Clientes", ClienteScreen);
+
+        TransporteTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id Transporte", "Id Paquete", "Cantidad Paquetes", "Ruta"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(TransporteTable);
+
+        New_Paquete2.setText("Nuevo");
+        New_Paquete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                New_Paquete2ActionPerformed(evt);
+            }
+        });
+
+        Load_Paquete2.setText("Cargar");
+
+        Mod_Paquetes2.setText("Modificar");
+        Mod_Paquetes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mod_Paquetes2ActionPerformed(evt);
+            }
+        });
+
+        Del_Paquetes2.setText("Eliminar");
+        Del_Paquetes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Del_Paquetes2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TransporteScreenLayout = new javax.swing.GroupLayout(TransporteScreen);
+        TransporteScreen.setLayout(TransporteScreenLayout);
+        TransporteScreenLayout.setHorizontalGroup(
+            TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransporteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransporteScreenLayout.createSequentialGroup()
+                        .addComponent(New_Paquete2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Load_Paquete2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mod_Paquetes2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Del_Paquetes2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        TransporteScreenLayout.setVerticalGroup(
+            TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransporteScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Mod_Paquetes2)
+                    .addComponent(Del_Paquetes2)
+                    .addComponent(New_Paquete2)
+                    .addComponent(Load_Paquete2))
+                .addContainerGap())
+        );
+
+        Tabs.addTab("Transporte", TransporteScreen);
+
+        AlmacenTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id Almacen", "Id Paquete", "Cantidad Paquetes", "Ubicacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(AlmacenTable);
+
+        New_Paquete3.setText("Nuevo");
+        New_Paquete3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                New_Paquete3ActionPerformed(evt);
+            }
+        });
+
+        Load_Paquete3.setText("Cargar");
+
+        Mod_Paquetes3.setText("Modificar");
+        Mod_Paquetes3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mod_Paquetes3ActionPerformed(evt);
+            }
+        });
+
+        Del_Paquetes3.setText("Eliminar");
+        Del_Paquetes3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Del_Paquetes3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AlmacenScreenLayout = new javax.swing.GroupLayout(AlmacenScreen);
+        AlmacenScreen.setLayout(AlmacenScreenLayout);
+        AlmacenScreenLayout.setHorizontalGroup(
+            AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlmacenScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                    .addGroup(AlmacenScreenLayout.createSequentialGroup()
+                        .addComponent(New_Paquete3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Load_Paquete3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mod_Paquetes3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Del_Paquetes3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        AlmacenScreenLayout.setVerticalGroup(
+            AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlmacenScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Mod_Paquetes3)
+                    .addComponent(Del_Paquetes3)
+                    .addComponent(New_Paquete3)
+                    .addComponent(Load_Paquete3))
+                .addContainerGap())
+        );
+
+        Tabs.addTab("Almacen", AlmacenScreen);
+
+        InsercionesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Id", "Campo", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        JScrollingPane1.setViewportView(InsercionesTable);
+
+        javax.swing.GroupLayout InsercionesTabLayout = new javax.swing.GroupLayout(InsercionesTab);
+        InsercionesTab.setLayout(InsercionesTabLayout);
+        InsercionesTabLayout.setHorizontalGroup(
+            InsercionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JScrollingPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+        );
+        InsercionesTabLayout.setVerticalGroup(
+            InsercionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JScrollingPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+        );
+
+        BitacoraTabs.addTab("Inserciones", InsercionesTab);
+
+        ActualizacionesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Id", "Campo", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        JScrollingPane2.setViewportView(ActualizacionesTable);
+
+        javax.swing.GroupLayout ActualizacionesTabLayout = new javax.swing.GroupLayout(ActualizacionesTab);
+        ActualizacionesTab.setLayout(ActualizacionesTabLayout);
+        ActualizacionesTabLayout.setHorizontalGroup(
+            ActualizacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JScrollingPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+        );
+        ActualizacionesTabLayout.setVerticalGroup(
+            ActualizacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JScrollingPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+        );
+
+        BitacoraTabs.addTab("Actualizaciones", ActualizacionesTab);
+
+        EliminacionesTable.setModel(InsercionesTable.getModel());
+        jScrollPane4.setViewportView(EliminacionesTable);
+        if (EliminacionesTable.getColumnModel().getColumnCount() > 0) {
+            EliminacionesTable.getColumnModel().getColumn(0).setHeaderValue("Id");
+            EliminacionesTable.getColumnModel().getColumn(1).setHeaderValue("Campo");
+            EliminacionesTable.getColumnModel().getColumn(2).setHeaderValue("Fecha");
+        }
+
+        javax.swing.GroupLayout EliminacionesTabLayout = new javax.swing.GroupLayout(EliminacionesTab);
+        EliminacionesTab.setLayout(EliminacionesTabLayout);
+        EliminacionesTabLayout.setHorizontalGroup(
+            EliminacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+        );
+        EliminacionesTabLayout.setVerticalGroup(
+            EliminacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EliminacionesTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
+        );
+
+        BitacoraTabs.addTab("Eliminaciones", EliminacionesTab);
+
+        javax.swing.GroupLayout BitacoraScreenLayout = new javax.swing.GroupLayout(BitacoraScreen);
+        BitacoraScreen.setLayout(BitacoraScreenLayout);
+        BitacoraScreenLayout.setHorizontalGroup(
+            BitacoraScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BitacoraScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BitacoraTabs)
+                .addContainerGap())
+        );
+        BitacoraScreenLayout.setVerticalGroup(
+            BitacoraScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BitacoraScreenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BitacoraTabs)
+                .addContainerGap())
+        );
+
+        Tabs.addTab("Bitacora", BitacoraScreen);
 
         LoginButton.setText("Iniciar sesión");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +595,7 @@ public class Java_SQL extends javax.swing.JFrame {
                     .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(UserField)
                         .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginScreenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LoginTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -131,336 +618,27 @@ public class Java_SQL extends javax.swing.JFrame {
                 .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        PaqueteTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id paquete", "Id producto", "Tipo", "Ruta", "Peso", "Descripcion", "Declaracion Aduanera", "Valor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(PaqueteTable);
-
-        javax.swing.GroupLayout PaqueteScreenLayout = new javax.swing.GroupLayout(PaqueteScreen);
-        PaqueteScreen.setLayout(PaqueteScreenLayout);
-        PaqueteScreenLayout.setHorizontalGroup(
-            PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
-        );
-        PaqueteScreenLayout.setVerticalGroup(
-            PaqueteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaqueteScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        Tabs.addTab("Paquetes", PaqueteScreen);
-
-        ClienteTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id cliente", "Id paquete", "Nombre", "Direccion", "Telefono", "Pago Mensual", "No. Cuenta", "No. Tarjeta"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(ClienteTable);
-
-        javax.swing.GroupLayout ClienteScreenLayout = new javax.swing.GroupLayout(ClienteScreen);
-        ClienteScreen.setLayout(ClienteScreenLayout);
-        ClienteScreenLayout.setHorizontalGroup(
-            ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        ClienteScreenLayout.setVerticalGroup(
-            ClienteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        Tabs.addTab("Clientes", ClienteScreen);
-
-        TransporteTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id Transporte", "Id Paquete", "Cantidad Paquetes", "Ruta"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(TransporteTable);
-
-        javax.swing.GroupLayout TransporteScreenLayout = new javax.swing.GroupLayout(TransporteScreen);
-        TransporteScreen.setLayout(TransporteScreenLayout);
-        TransporteScreenLayout.setHorizontalGroup(
-            TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TransporteScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        TransporteScreenLayout.setVerticalGroup(
-            TransporteScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TransporteScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        Tabs.addTab("Transporte", TransporteScreen);
-
-        AlmacenTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id Almacen", "Id Paquete", "Cantidad Paquetes", "Ubicacion"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(AlmacenTable);
-
-        javax.swing.GroupLayout AlmacenScreenLayout = new javax.swing.GroupLayout(AlmacenScreen);
-        AlmacenScreen.setLayout(AlmacenScreenLayout);
-        AlmacenScreenLayout.setHorizontalGroup(
-            AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AlmacenScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        AlmacenScreenLayout.setVerticalGroup(
-            AlmacenScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AlmacenScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        Tabs.addTab("Almacen", AlmacenScreen);
-
-        InsercionesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Id", "Campo", "Fecha"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        JScrollingPane1.setViewportView(InsercionesTable);
-
-        javax.swing.GroupLayout InsercionesTabLayout = new javax.swing.GroupLayout(InsercionesTab);
-        InsercionesTab.setLayout(InsercionesTabLayout);
-        InsercionesTabLayout.setHorizontalGroup(
-            InsercionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JScrollingPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        InsercionesTabLayout.setVerticalGroup(
-            InsercionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JScrollingPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-        );
-
-        BitacoraTabs.addTab("Inserciones", InsercionesTab);
-
-        ActualizacionesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Id", "Campo", "Fecha"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        JScrollingPane2.setViewportView(ActualizacionesTable);
-
-        javax.swing.GroupLayout ActualizacionesTabLayout = new javax.swing.GroupLayout(ActualizacionesTab);
-        ActualizacionesTab.setLayout(ActualizacionesTabLayout);
-        ActualizacionesTabLayout.setHorizontalGroup(
-            ActualizacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JScrollingPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        ActualizacionesTabLayout.setVerticalGroup(
-            ActualizacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JScrollingPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-        );
-
-        BitacoraTabs.addTab("Actualizaciones", ActualizacionesTab);
-
-        EliminacionesTable.setModel(InsercionesTable.getModel());
-        jScrollPane4.setViewportView(EliminacionesTable);
-        if (EliminacionesTable.getColumnModel().getColumnCount() > 0) {
-            EliminacionesTable.getColumnModel().getColumn(0).setHeaderValue("Id");
-            EliminacionesTable.getColumnModel().getColumn(1).setHeaderValue("Campo");
-            EliminacionesTable.getColumnModel().getColumn(2).setHeaderValue("Fecha");
-        }
-
-        javax.swing.GroupLayout EliminacionesTabLayout = new javax.swing.GroupLayout(EliminacionesTab);
-        EliminacionesTab.setLayout(EliminacionesTabLayout);
-        EliminacionesTabLayout.setHorizontalGroup(
-            EliminacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        EliminacionesTabLayout.setVerticalGroup(
-            EliminacionesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EliminacionesTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
-        );
-
-        BitacoraTabs.addTab("Eliminaciones", EliminacionesTab);
-
-        javax.swing.GroupLayout BitacoraScreenLayout = new javax.swing.GroupLayout(BitacoraScreen);
-        BitacoraScreen.setLayout(BitacoraScreenLayout);
-        BitacoraScreenLayout.setHorizontalGroup(
-            BitacoraScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BitacoraScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BitacoraTabs)
-                .addContainerGap())
-        );
-        BitacoraScreenLayout.setVerticalGroup(
-            BitacoraScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BitacoraScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BitacoraTabs)
-                .addContainerGap())
-        );
-
-        Tabs.addTab("Bitacora", BitacoraScreen);
-
-        LayeredPane.setLayer(LoginScreen, javax.swing.JLayeredPane.PALETTE_LAYER);
-        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DRAG_LAYER);
+        LayeredPane.setLayer(LoginScreen, javax.swing.JLayeredPane.MODAL_LAYER);
 
         javax.swing.GroupLayout LayeredPaneLayout = new javax.swing.GroupLayout(LayeredPane);
         LayeredPane.setLayout(LayeredPaneLayout);
         LayeredPaneLayout.setHorizontalGroup(
             LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
-            .addGroup(LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Tabs))
+            .addGap(0, 834, Short.MAX_VALUE)
             .addGroup(LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LayeredPaneLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LoginScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(Tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LoginScreen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LayeredPaneLayout.setVerticalGroup(
             LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 513, Short.MAX_VALUE)
             .addGroup(LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                .addComponent(Tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, Short.MAX_VALUE))
             .addGroup(LayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LayeredPaneLayout.createSequentialGroup()
                     .addContainerGap()
@@ -497,12 +675,174 @@ public class Java_SQL extends javax.swing.JFrame {
        LoginScreen.setVisible(false);
        Tabs.setVisible(true);
       }
+      
+      DefaultTableModel paquetes = (DefaultTableModel) PaqueteTable.getModel();
+        paquetes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res = Conexion.Consulta("SELECT * FROM Paquete"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            while (res.next()) {
+                Vector v = new Vector();
+                v.add(res.getInt(1));
+                v.add(res.getInt(2));
+                v.add(res.getString(3));
+                v.add(res.getString(4));
+                v.add(res.getInt(5));
+                v.add(res.getString(6));
+                v.add(res.getString(7));
+                //System.out.println(v);
+                paquetes.addRow(v);
+                PaqueteTable.setModel(paquetes);
+            }
+        } catch (SQLException e) {
+        }
              
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void UserFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserFieldActionPerformed
+
+    private void TabsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabsMouseClicked
+        DefaultTableModel paquetes = (DefaultTableModel) PaqueteTable.getModel();
+        paquetes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res = Conexion.Consulta("SELECT * FROM Paquete"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res.next()) {
+                cont ++;
+                Vector v = new Vector();
+                v.add(res.getInt(1));
+                v.add(res.getInt(2));
+                v.add(res.getString(3));
+                v.add(res.getString(4));
+                v.add(res.getInt(5));
+                v.add(res.getString(6));
+                v.add(res.getString(7));
+                //System.out.println(v);
+                paquetes.addRow(v);
+                PaqueteTable.setModel(paquetes);
+            }
+        } catch (SQLException e) {
+        }
+        
+        DefaultTableModel clientes = (DefaultTableModel) ClienteTable.getModel();
+        clientes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res1 = Conexion.Consulta("SELECT * FROM Cliente"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res1.next()) {
+                cont ++;
+                Vector v = new Vector();
+                v.add(res1.getInt(1));
+                v.add(res1.getInt(2));
+                v.add(res1.getString(3));
+                v.add(res1.getString(4));
+                v.add(res1.getInt(5));
+                //System.out.println(v);
+                clientes.addRow(v);
+                ClienteTable.setModel(clientes);
+            }
+        } catch (SQLException e) {
+        }
+        
+        DefaultTableModel transportes = (DefaultTableModel) TransporteTable.getModel();
+        transportes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res2 = Conexion.Consulta("SELECT * FROM Transporte"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res2.next()) {
+                cont ++;
+                Vector v = new Vector();
+                v.add(res2.getInt(1));
+                v.add(res2.getInt(2));
+                v.add(res2.getInt(3));
+                v.add(res2.getString(4));
+                //System.out.println(v);
+                transportes.addRow(v);
+                TransporteTable.setModel(transportes);
+            }
+        } catch (SQLException e) {
+        }
+        
+        DefaultTableModel almacenes = (DefaultTableModel) AlmacenTable.getModel();
+        almacenes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res3 = Conexion.Consulta("SELECT * FROM Almacen"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res3.next()) {
+                cont ++;
+                Vector v = new Vector();
+                v.add(res3.getInt(1));
+                v.add(res3.getInt(2));
+                v.add(res3.getInt(3));
+                v.add(res3.getString(4));
+                //System.out.println(v);
+                almacenes.addRow(v);
+                AlmacenTable.setModel(almacenes);
+            }
+        } catch (SQLException e) {
+        }
+        
+        
+    }//GEN-LAST:event_TabsMouseClicked
+
+    private void Mod_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_PaquetesActionPerformed
+        Modificar mod = new Modificar();
+        mod.setVisible(true);
+    }//GEN-LAST:event_Mod_PaquetesActionPerformed
+
+    private void New_PaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_PaqueteActionPerformed
+        
+    }//GEN-LAST:event_New_PaqueteActionPerformed
+
+    private void Del_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_PaquetesActionPerformed
+        Eliminar mod = new Eliminar(Tabs.getSelectedIndex());
+        mod.setVisible(true);
+    }//GEN-LAST:event_Del_PaquetesActionPerformed
+
+    private void New_Paquete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_New_Paquete1ActionPerformed
+
+    private void Mod_Paquetes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mod_Paquetes1ActionPerformed
+
+    private void Del_Paquetes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_Paquetes1ActionPerformed
+        Eliminar mod = new Eliminar(Tabs.getSelectedIndex());
+        mod.setVisible(true);
+    }//GEN-LAST:event_Del_Paquetes1ActionPerformed
+
+    private void New_Paquete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_New_Paquete2ActionPerformed
+
+    private void Mod_Paquetes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mod_Paquetes2ActionPerformed
+
+    private void Del_Paquetes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_Paquetes2ActionPerformed
+        Eliminar mod = new Eliminar(Tabs.getSelectedIndex());
+        mod.setVisible(true);
+    }//GEN-LAST:event_Del_Paquetes2ActionPerformed
+
+    private void New_Paquete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_New_Paquete3ActionPerformed
+
+    private void Mod_Paquetes3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mod_Paquetes3ActionPerformed
+
+    private void Del_Paquetes3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_Paquetes3ActionPerformed
+        Eliminar mod = new Eliminar(Tabs.getSelectedIndex());
+        mod.setVisible(true);
+    }//GEN-LAST:event_Del_Paquetes3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,6 +892,10 @@ public class Java_SQL extends javax.swing.JFrame {
     private javax.swing.JTabbedPane BitacoraTabs;
     private javax.swing.JPanel ClienteScreen;
     private javax.swing.JTable ClienteTable;
+    private javax.swing.JButton Del_Paquetes;
+    private javax.swing.JButton Del_Paquetes1;
+    private javax.swing.JButton Del_Paquetes2;
+    private javax.swing.JButton Del_Paquetes3;
     private javax.swing.JPanel EliminacionesTab;
     private javax.swing.JTable EliminacionesTable;
     private javax.swing.JPanel InsercionesTab;
@@ -559,10 +903,22 @@ public class Java_SQL extends javax.swing.JFrame {
     private javax.swing.JScrollPane JScrollingPane1;
     private javax.swing.JScrollPane JScrollingPane2;
     private javax.swing.JLayeredPane LayeredPane;
+    private javax.swing.JButton Load_Paquete;
+    private javax.swing.JButton Load_Paquete1;
+    private javax.swing.JButton Load_Paquete2;
+    private javax.swing.JButton Load_Paquete3;
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel LoginLabel;
     private javax.swing.JPanel LoginScreen;
     private javax.swing.JLabel LoginTitle;
+    private javax.swing.JButton Mod_Paquetes;
+    private javax.swing.JButton Mod_Paquetes1;
+    private javax.swing.JButton Mod_Paquetes2;
+    private javax.swing.JButton Mod_Paquetes3;
+    private javax.swing.JButton New_Paquete;
+    private javax.swing.JButton New_Paquete1;
+    private javax.swing.JButton New_Paquete2;
+    private javax.swing.JButton New_Paquete3;
     private javax.swing.JPanel PaqueteScreen;
     private javax.swing.JTable PaqueteTable;
     private javax.swing.JPasswordField PasswordField;
