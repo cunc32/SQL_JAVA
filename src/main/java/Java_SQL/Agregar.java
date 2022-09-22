@@ -4,17 +4,39 @@
  */
 package Java_SQL;
 
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author AORUS
  */
 public class Agregar extends javax.swing.JFrame {
 
+    int indice = 0;
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form Agregar
+     *
+     * @param index
+     * @param tabla
      */
-    public Agregar() {
+    public Agregar(int index, JTable tabla) {
         initComponents();
+        indice = index;
+        this.modelo.setColumnCount(tabla.getModel().getColumnCount());
+        Vector temporal = new Vector();
+        for (int i = 0; i < tabla.getModel().getColumnCount(); i++) {
+            temporal.add(tabla.getModel().getColumnName(i));
+        }
+        this.modelo.setColumnIdentifiers(temporal);
+        this.modelo.setRowCount(0);
+        agregando.setModel(this.modelo);
     }
 
     /**
@@ -27,12 +49,13 @@ public class Agregar extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        agregando = new javax.swing.JTable();
+        Insertar = new javax.swing.JButton();
+        newFila = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        agregando.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -43,9 +66,21 @@ public class Agregar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(agregando);
 
-        jButton1.setText("Insertar");
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+
+        newFila.setText("Agregar Fila");
+        newFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newFilaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,8 +91,9 @@ public class Agregar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(Insertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(newFila, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -66,12 +102,39 @@ public class Agregar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Insertar)
+                    .addComponent(newFila))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        modelo = (DefaultTableModel) agregando.getModel();
+        int limite = this.modelo.getRowCount();
+        if (indice == 0) {
+            for (int i = 0; i < limite; i++) {
+                try {
+                    Conexion.AgregarPaquete(Integer.parseInt((String)modelo.getValueAt(i, 0)),
+                            Integer.parseInt((String)modelo.getValueAt(i, 1)),
+                            (String)modelo.getValueAt(i, 2),
+                            (String)modelo.getValueAt(i, 3),
+                            Integer.parseInt((String)modelo.getValueAt(i, 4)),
+                            (String)modelo.getValueAt(i, 5),
+                            (String)modelo.getValueAt(i, 6));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Agregar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void newFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFilaActionPerformed
+        modelo.setRowCount(modelo.getRowCount() + 1);
+        agregando.setModel(modelo);
+    }//GEN-LAST:event_newFilaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,16 +164,12 @@ public class Agregar extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Agregar().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Insertar;
+    private javax.swing.JTable agregando;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton newFila;
     // End of variables declaration//GEN-END:variables
 }

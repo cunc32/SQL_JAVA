@@ -11,10 +11,11 @@ package Java_SQL;
  */
 public class Modificar extends javax.swing.JFrame {
 
+    int indice = 0;
     /**
      * Creates new form Modificar
+     * @param index
      */
-    int indice = 0;
     public Modificar(int index) {
         initComponents();
         this.setLocationRelativeTo(null);

@@ -33,13 +33,6 @@ public class Java_SQL extends javax.swing.JFrame {
     private void initComponents() {
 
         LayeredPane = new javax.swing.JLayeredPane();
-        LoginScreen = new javax.swing.JPanel();
-        LoginButton = new javax.swing.JButton();
-        PasswordField = new javax.swing.JPasswordField();
-        UserField = new javax.swing.JTextField();
-        PasswordLabel = new javax.swing.JLabel();
-        LoginLabel = new javax.swing.JLabel();
-        LoginTitle = new javax.swing.JLabel();
         Tabs = new javax.swing.JTabbedPane();
         PaqueteScreen = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,75 +73,18 @@ public class Java_SQL extends javax.swing.JFrame {
         EliminacionesTab = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         EliminacionesTable = new javax.swing.JTable();
+        LoginScreen = new javax.swing.JPanel();
+        LoginButton = new javax.swing.JButton();
+        PasswordField = new javax.swing.JPasswordField();
+        UserField = new javax.swing.JTextField();
+        PasswordLabel = new javax.swing.JLabel();
+        LoginLabel = new javax.swing.JLabel();
+        LoginTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Base de datos");
         setPreferredSize(new java.awt.Dimension(800, 500));
         setSize(new java.awt.Dimension(800, 500));
-
-        LoginButton.setText("Iniciar sesión");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
-            }
-        });
-
-        PasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
-            }
-        });
-
-        UserField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserFieldActionPerformed(evt);
-            }
-        });
-
-        PasswordLabel.setText("Contraseña: ");
-
-        LoginLabel.setText("Usuario: ");
-
-        LoginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginTitle.setText("Base de datos");
-
-        javax.swing.GroupLayout LoginScreenLayout = new javax.swing.GroupLayout(LoginScreen);
-        LoginScreen.setLayout(LoginScreenLayout);
-        LoginScreenLayout.setHorizontalGroup(
-            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginScreenLayout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PasswordLabel)
-                    .addComponent(LoginLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LoginButton)
-                    .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(UserField)
-                        .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap(359, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginScreenLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(LoginTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        LoginScreenLayout.setVerticalGroup(
-            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginScreenLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(LoginTitle)
-                .addGap(127, 127, 127)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginLabel)
-                    .addComponent(UserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PasswordLabel)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(LoginButton)
-                .addContainerGap(168, Short.MAX_VALUE))
-        );
 
         Tabs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,6 +142,11 @@ public class Java_SQL extends javax.swing.JFrame {
         });
 
         Load_Paquete.setText("Cargar");
+        Load_Paquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Load_PaqueteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PaqueteScreenLayout = new javax.swing.GroupLayout(PaqueteScreen);
         PaqueteScreen.setLayout(PaqueteScreenLayout);
@@ -277,6 +218,11 @@ public class Java_SQL extends javax.swing.JFrame {
         });
 
         Load_Paquete1.setText("Cargar");
+        Load_Paquete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Load_Paquete1ActionPerformed(evt);
+            }
+        });
 
         Mod_Paquetes1.setText("Modificar");
         Mod_Paquetes1.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +308,11 @@ public class Java_SQL extends javax.swing.JFrame {
         });
 
         Load_Paquete2.setText("Cargar");
+        Load_Paquete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Load_Paquete2ActionPerformed(evt);
+            }
+        });
 
         Mod_Paquetes2.setText("Modificar");
         Mod_Paquetes2.addActionListener(new java.awt.event.ActionListener() {
@@ -447,6 +398,11 @@ public class Java_SQL extends javax.swing.JFrame {
         });
 
         Load_Paquete3.setText("Cargar");
+        Load_Paquete3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Load_Paquete3ActionPerformed(evt);
+            }
+        });
 
         Mod_Paquetes3.setText("Modificar");
         Mod_Paquetes3.addActionListener(new java.awt.event.ActionListener() {
@@ -620,8 +576,72 @@ public class Java_SQL extends javax.swing.JFrame {
 
         Tabs.addTab("Bitacora", BitacoraScreen);
 
+        LoginButton.setText("Iniciar sesión");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
+
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
+
+        UserField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserFieldActionPerformed(evt);
+            }
+        });
+
+        PasswordLabel.setText("Contraseña: ");
+
+        LoginLabel.setText("Usuario: ");
+
+        LoginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LoginTitle.setText("Base de datos");
+
+        javax.swing.GroupLayout LoginScreenLayout = new javax.swing.GroupLayout(LoginScreen);
+        LoginScreen.setLayout(LoginScreenLayout);
+        LoginScreenLayout.setHorizontalGroup(
+            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginScreenLayout.createSequentialGroup()
+                .addGap(271, 271, 271)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PasswordLabel)
+                    .addComponent(LoginLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoginButton)
+                    .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(UserField)
+                        .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
+                .addContainerGap(359, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginScreenLayout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(LoginTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        LoginScreenLayout.setVerticalGroup(
+            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginScreenLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(LoginTitle)
+                .addGap(127, 127, 127)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginLabel)
+                    .addComponent(UserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PasswordLabel)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(LoginButton)
+                .addContainerGap(168, Short.MAX_VALUE))
+        );
+
+        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DRAG_LAYER);
         LayeredPane.setLayer(LoginScreen, javax.swing.JLayeredPane.MODAL_LAYER);
-        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout LayeredPaneLayout = new javax.swing.GroupLayout(LayeredPane);
         LayeredPane.setLayout(LayeredPaneLayout);
@@ -677,7 +697,6 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_UserFieldActionPerformed
 
     private void TabsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabsMouseClicked
-        reload();
     }//GEN-LAST:event_TabsMouseClicked
 
     private void Mod_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_PaquetesActionPerformed
@@ -686,7 +705,8 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_Mod_PaquetesActionPerformed
 
     private void New_PaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_PaqueteActionPerformed
-
+        Agregar mod = new Agregar(Tabs.getSelectedIndex(), PaqueteTable);
+        mod.setVisible(true);
     }//GEN-LAST:event_New_PaqueteActionPerformed
 
     private void Del_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_PaquetesActionPerformed
@@ -695,7 +715,8 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_Del_PaquetesActionPerformed
 
     private void New_Paquete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete1ActionPerformed
-        // TODO add your handling code here:
+        Agregar mod = new Agregar(Tabs.getSelectedIndex(), ClienteTable);
+        mod.setVisible(true);
     }//GEN-LAST:event_New_Paquete1ActionPerformed
 
     private void Mod_Paquetes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes1ActionPerformed
@@ -708,7 +729,8 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_Del_Paquetes1ActionPerformed
 
     private void New_Paquete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete2ActionPerformed
-        // TODO add your handling code here:
+        Agregar mod = new Agregar(Tabs.getSelectedIndex(), TransporteTable);
+        mod.setVisible(true);
     }//GEN-LAST:event_New_Paquete2ActionPerformed
 
     private void Mod_Paquetes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes2ActionPerformed
@@ -721,7 +743,8 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_Del_Paquetes2ActionPerformed
 
     private void New_Paquete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Paquete3ActionPerformed
-        // TODO add your handling code here:
+        Agregar mod = new Agregar(Tabs.getSelectedIndex(), AlmacenTable);
+        mod.setVisible(true);
     }//GEN-LAST:event_New_Paquete3ActionPerformed
 
     private void Mod_Paquetes3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_Paquetes3ActionPerformed
@@ -736,6 +759,22 @@ public class Java_SQL extends javax.swing.JFrame {
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         iniciarSesion();
     }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void Load_PaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_PaqueteActionPerformed
+        reload();
+    }//GEN-LAST:event_Load_PaqueteActionPerformed
+
+    private void Load_Paquete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_Paquete1ActionPerformed
+        reload();
+    }//GEN-LAST:event_Load_Paquete1ActionPerformed
+
+    private void Load_Paquete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_Paquete2ActionPerformed
+        reload();
+    }//GEN-LAST:event_Load_Paquete2ActionPerformed
+
+    private void Load_Paquete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_Paquete3ActionPerformed
+        reload();
+    }//GEN-LAST:event_Load_Paquete3ActionPerformed
 
     private void reload() {
         //JOptionPane.showMessageDialog(null, "Favor Espere", "Cargando", JOptionPane.INFORMATION_MESSAGE);

@@ -49,11 +49,35 @@ public class Conexion {
         entrada.execute();
     }
     
+    public static void AgregarPaquete(int id_paq, int id_prod, String tipo, String ruta, int peso, String desc, String dec_Aduana) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call EntradaPaquete(?,?,?,?,?,?,?)}");
+        entrada.setInt(1, id_paq);
+        entrada.setInt(2, id_paq);
+        entrada.setString(3, tipo);
+        entrada.setString(4, ruta);
+        entrada.setInt(5, peso);
+        entrada.setString(6, desc);
+        entrada.setString(7, dec_Aduana);
+        entrada.execute();
+    }
+    
     public static void EliminarCliente(int id) throws SQLException {
         CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelCliente(?)}");
         entrada.setInt(1, id);
         entrada.execute();
     }
+     /*
+    public static void AgregarCliente(int id_cliente, int id_paq, ) throws SQLException {
+        CallableStatement entrada = Conexion.getConexion().prepareCall("{call EntradaCliente(?,?,?,?,?,?,?)}");
+        entrada.setInt(1, id_paq);
+        entrada.setInt(2, id_paq);
+        entrada.setString(3, tipo);
+        entrada.setString(4, ruta);
+        entrada.setInt(5, peso);
+        entrada.setString(6, desc);
+        entrada.setString(7, dec_Aduana);
+        entrada.execute();
+    } */
     
     public static void EliminarTransporte(int id) throws SQLException {
         CallableStatement entrada = Conexion.getConexion().prepareCall("{call DelTransporte(?)}");

@@ -14,10 +14,11 @@ import java.util.logging.Logger;
  */
 public class Eliminar extends javax.swing.JFrame {
 
+    int indice = 1;
     /**
      * Creates new form Eliminar
+     * @param index
      */
-    int indice = 1;
     public Eliminar(int index) {
         initComponents();
         indice = index;
