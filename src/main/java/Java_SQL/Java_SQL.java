@@ -4,10 +4,8 @@
  */
 package Java_SQL;
 
-import java.awt.HeadlessException;
 import java.sql.*;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +33,13 @@ public class Java_SQL extends javax.swing.JFrame {
     private void initComponents() {
 
         LayeredPane = new javax.swing.JLayeredPane();
+        LoginScreen = new javax.swing.JPanel();
+        LoginButton = new javax.swing.JButton();
+        PasswordField = new javax.swing.JPasswordField();
+        UserField = new javax.swing.JTextField();
+        PasswordLabel = new javax.swing.JLabel();
+        LoginLabel = new javax.swing.JLabel();
+        LoginTitle = new javax.swing.JLabel();
         Tabs = new javax.swing.JTabbedPane();
         PaqueteScreen = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -75,18 +80,75 @@ public class Java_SQL extends javax.swing.JFrame {
         EliminacionesTab = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         EliminacionesTable = new javax.swing.JTable();
-        LoginScreen = new javax.swing.JPanel();
-        LoginButton = new javax.swing.JButton();
-        PasswordField = new javax.swing.JPasswordField();
-        UserField = new javax.swing.JTextField();
-        PasswordLabel = new javax.swing.JLabel();
-        LoginLabel = new javax.swing.JLabel();
-        LoginTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Base de datos");
         setPreferredSize(new java.awt.Dimension(800, 500));
         setSize(new java.awt.Dimension(800, 500));
+
+        LoginButton.setText("Iniciar sesión");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
+
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
+
+        UserField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserFieldActionPerformed(evt);
+            }
+        });
+
+        PasswordLabel.setText("Contraseña: ");
+
+        LoginLabel.setText("Usuario: ");
+
+        LoginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LoginTitle.setText("Base de datos");
+
+        javax.swing.GroupLayout LoginScreenLayout = new javax.swing.GroupLayout(LoginScreen);
+        LoginScreen.setLayout(LoginScreenLayout);
+        LoginScreenLayout.setHorizontalGroup(
+            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginScreenLayout.createSequentialGroup()
+                .addGap(271, 271, 271)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PasswordLabel)
+                    .addComponent(LoginLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoginButton)
+                    .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(UserField)
+                        .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
+                .addContainerGap(359, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginScreenLayout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(LoginTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        LoginScreenLayout.setVerticalGroup(
+            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginScreenLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(LoginTitle)
+                .addGap(127, 127, 127)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginLabel)
+                    .addComponent(UserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PasswordLabel)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(LoginButton)
+                .addContainerGap(168, Short.MAX_VALUE))
+        );
 
         Tabs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -558,68 +620,8 @@ public class Java_SQL extends javax.swing.JFrame {
 
         Tabs.addTab("Bitacora", BitacoraScreen);
 
-        LoginButton.setText("Iniciar sesión");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
-            }
-        });
-
-        PasswordField.setText("Password");
-
-        UserField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserFieldActionPerformed(evt);
-            }
-        });
-
-        PasswordLabel.setText("Contraseña: ");
-
-        LoginLabel.setText("Usuario: ");
-
-        LoginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginTitle.setText("Base de datos");
-
-        javax.swing.GroupLayout LoginScreenLayout = new javax.swing.GroupLayout(LoginScreen);
-        LoginScreen.setLayout(LoginScreenLayout);
-        LoginScreenLayout.setHorizontalGroup(
-            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginScreenLayout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PasswordLabel)
-                    .addComponent(LoginLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LoginButton)
-                    .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(UserField)
-                        .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap(359, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LoginTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        LoginScreenLayout.setVerticalGroup(
-            LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginScreenLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(LoginTitle)
-                .addGap(85, 85, 85)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginLabel)
-                    .addComponent(UserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(LoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PasswordLabel)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(LoginButton)
-                .addContainerGap(205, Short.MAX_VALUE))
-        );
-
-        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DRAG_LAYER);
         LayeredPane.setLayer(LoginScreen, javax.swing.JLayeredPane.MODAL_LAYER);
+        LayeredPane.setLayer(Tabs, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout LayeredPaneLayout = new javax.swing.GroupLayout(LayeredPane);
         LayeredPane.setLayout(LayeredPaneLayout);
@@ -665,38 +667,9 @@ public class Java_SQL extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-      String username = "test";
-      String password = "1234";
-    
-      if (UserField.getText().equals(username) && password.equals(new String(PasswordField.getPassword()))) 
-      {
-       LoginScreen.setVisible(false);
-       Tabs.setVisible(true);
-      }
-      
-      DefaultTableModel paquetes = (DefaultTableModel) PaqueteTable.getModel();
-        paquetes.setRowCount(0);
-        System.out.println("Correcto");
-        ResultSet res = Conexion.Consulta("SELECT * FROM Paquete"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
-        try {
-            while (res.next()) {
-                Vector v = new Vector();
-                v.add(res.getInt(1));
-                v.add(res.getInt(2));
-                v.add(res.getString(3));
-                v.add(res.getString(4));
-                v.add(res.getInt(5));
-                v.add(res.getString(6));
-                v.add(res.getString(7));
-                //System.out.println(v);
-                paquetes.addRow(v);
-                PaqueteTable.setModel(paquetes);
-            }
-        } catch (SQLException e) {
-        }
-             
+        iniciarSesion();
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void UserFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserFieldActionPerformed
@@ -704,91 +677,7 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_UserFieldActionPerformed
 
     private void TabsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabsMouseClicked
-        DefaultTableModel paquetes = (DefaultTableModel) PaqueteTable.getModel();
-        paquetes.setRowCount(0);
-        System.out.println("Correcto");
-        ResultSet res = Conexion.Consulta("SELECT * FROM Paquete"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
-        try {
-            int cont = 0;
-            while (res.next()) {
-                cont ++;
-                Vector v = new Vector();
-                v.add(res.getInt(1));
-                v.add(res.getInt(2));
-                v.add(res.getString(3));
-                v.add(res.getString(4));
-                v.add(res.getInt(5));
-                v.add(res.getString(6));
-                v.add(res.getString(7));
-                //System.out.println(v);
-                paquetes.addRow(v);
-                PaqueteTable.setModel(paquetes);
-            }
-        } catch (SQLException e) {
-        }
-        
-        DefaultTableModel clientes = (DefaultTableModel) ClienteTable.getModel();
-        clientes.setRowCount(0);
-        System.out.println("Correcto");
-        ResultSet res1 = Conexion.Consulta("SELECT * FROM Cliente"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
-        try {
-            int cont = 0;
-            while (res1.next()) {
-                cont ++;
-                Vector v = new Vector();
-                v.add(res1.getInt(1));
-                v.add(res1.getInt(2));
-                v.add(res1.getString(3));
-                v.add(res1.getString(4));
-                v.add(res1.getInt(5));
-                //System.out.println(v);
-                clientes.addRow(v);
-                ClienteTable.setModel(clientes);
-            }
-        } catch (SQLException e) {
-        }
-        
-        DefaultTableModel transportes = (DefaultTableModel) TransporteTable.getModel();
-        transportes.setRowCount(0);
-        System.out.println("Correcto");
-        ResultSet res2 = Conexion.Consulta("SELECT * FROM Transporte"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
-        try {
-            int cont = 0;
-            while (res2.next()) {
-                cont ++;
-                Vector v = new Vector();
-                v.add(res2.getInt(1));
-                v.add(res2.getInt(2));
-                v.add(res2.getInt(3));
-                v.add(res2.getString(4));
-                //System.out.println(v);
-                transportes.addRow(v);
-                TransporteTable.setModel(transportes);
-            }
-        } catch (SQLException e) {
-        }
-        
-        DefaultTableModel almacenes = (DefaultTableModel) AlmacenTable.getModel();
-        almacenes.setRowCount(0);
-        System.out.println("Correcto");
-        ResultSet res3 = Conexion.Consulta("SELECT * FROM Almacen"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
-        try {
-            int cont = 0;
-            while (res3.next()) {
-                cont ++;
-                Vector v = new Vector();
-                v.add(res3.getInt(1));
-                v.add(res3.getInt(2));
-                v.add(res3.getInt(3));
-                v.add(res3.getString(4));
-                //System.out.println(v);
-                almacenes.addRow(v);
-                AlmacenTable.setModel(almacenes);
-            }
-        } catch (SQLException e) {
-        }
-        
-        
+        reload();
     }//GEN-LAST:event_TabsMouseClicked
 
     private void Mod_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mod_PaquetesActionPerformed
@@ -797,7 +686,7 @@ public class Java_SQL extends javax.swing.JFrame {
     }//GEN-LAST:event_Mod_PaquetesActionPerformed
 
     private void New_PaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_PaqueteActionPerformed
-        
+
     }//GEN-LAST:event_New_PaqueteActionPerformed
 
     private void Del_PaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Del_PaquetesActionPerformed
@@ -844,6 +733,109 @@ public class Java_SQL extends javax.swing.JFrame {
         mod.setVisible(true);
     }//GEN-LAST:event_Del_Paquetes3ActionPerformed
 
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        iniciarSesion();
+    }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void reload() {
+        //JOptionPane.showMessageDialog(null, "Favor Espere", "Cargando", JOptionPane.INFORMATION_MESSAGE);
+        
+        DefaultTableModel paquetes = (DefaultTableModel) PaqueteTable.getModel();
+        paquetes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res = Conexion.Consulta("SELECT * FROM Paquete"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res.next()) {
+                cont++;
+                Vector v = new Vector();
+                v.add(res.getInt(1));
+                v.add(res.getInt(2));
+                v.add(res.getString(3));
+                v.add(res.getString(4));
+                v.add(res.getInt(5));
+                v.add(res.getString(6));
+                v.add(res.getString(7));
+                //System.out.println(v);
+                paquetes.addRow(v);
+                PaqueteTable.setModel(paquetes);
+            }
+        } catch (SQLException e) {
+        }
+
+        DefaultTableModel clientes = (DefaultTableModel) ClienteTable.getModel();
+        clientes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res1 = Conexion.Consulta("SELECT * FROM Cliente"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res1.next()) {
+                cont++;
+                Vector v = new Vector();
+                v.add(res1.getInt(1));
+                v.add(res1.getInt(2));
+                v.add(res1.getString(3));
+                v.add(res1.getString(4));
+                v.add(res1.getInt(5));
+                //System.out.println(v);
+                clientes.addRow(v);
+                ClienteTable.setModel(clientes);
+            }
+        } catch (SQLException e) {
+        }
+
+        DefaultTableModel transportes = (DefaultTableModel) TransporteTable.getModel();
+        transportes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res2 = Conexion.Consulta("SELECT * FROM Transporte"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res2.next()) {
+                cont++;
+                Vector v = new Vector();
+                v.add(res2.getInt(1));
+                v.add(res2.getInt(2));
+                v.add(res2.getInt(3));
+                v.add(res2.getString(4));
+                //System.out.println(v);
+                transportes.addRow(v);
+                TransporteTable.setModel(transportes);
+            }
+        } catch (SQLException e) {
+        }
+
+        DefaultTableModel almacenes = (DefaultTableModel) AlmacenTable.getModel();
+        almacenes.setRowCount(0);
+        System.out.println("Correcto");
+        ResultSet res3 = Conexion.Consulta("SELECT * FROM Almacen"); // INNER JOIN Declaracion_Aduanera USING(Id_Paquete)
+        try {
+            int cont = 0;
+            while (res3.next()) {
+                cont++;
+                Vector v = new Vector();
+                v.add(res3.getInt(1));
+                v.add(res3.getInt(2));
+                v.add(res3.getInt(3));
+                v.add(res3.getString(4));
+                //System.out.println(v);
+                almacenes.addRow(v);
+                AlmacenTable.setModel(almacenes);
+            }
+        } catch (SQLException e) {
+        }
+    }
+    
+    private void iniciarSesion() {
+        String username = "test";
+        String password = "1234";
+
+        if (UserField.getText().equals(username) && password.equals(new String(PasswordField.getPassword()))) {
+            LoginScreen.setVisible(false);
+            Tabs.setVisible(true);
+        }
+        reload();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -853,8 +845,7 @@ public class Java_SQL extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -878,7 +869,6 @@ public class Java_SQL extends javax.swing.JFrame {
             public void run() {
                 new Java_SQL().setVisible(true);
             }
-           
 
         });
     }
